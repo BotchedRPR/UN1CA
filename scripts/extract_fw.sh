@@ -110,6 +110,15 @@ EXTRACT_OS_PARTITIONS()
             local PREFIX=""
             local PARTITION="${img%.img}"
 
+            if [[ $img == *_a.img ]]; then
+                PARTITION=${img%_a.img}
+            elif [[ $img == *_b.img ]]; then
+                rm -f "$img"
+                continue
+            else
+                PARTITION="${img%.img}"
+            fi
+
             case "$(GET_IMG_FS_TYPE "$img")" in
                 "erofs")
                     echo "Extracting $img"
