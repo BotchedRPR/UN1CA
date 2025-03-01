@@ -305,73 +305,143 @@ GENERATE_UPDATER_SCRIPT()
 
         PRINT_HEADER
 
-        if $HAS_SUPER_EMPTY; then
-            echo -n 'package_extract_file("super_empty.img", "'
-            echo -n "$TARGET_BOOT_DEVICE_PATH"
-            echo    '/super");'
+        if [ "$TARGET_SUPER_PARTITION_SIZE" -ne 0 ]; then
+            if $HAS_SUPER_EMPTY; then
+                echo -n 'package_extract_file("super_empty.img", "'
+                echo -n "$TARGET_BOOT_DEVICE_PATH"
+                echo    '/super");'
+            fi
+            echo -e "\n# --- Start patching dynamic partitions ---\n\n"
+            echo -e "# Update dynamic partition metadata\n"
+            echo    'assert(update_dynamic_partitions(package_extract_file("dynamic_partitions_op_list")));'
         fi
-        echo -e "\n# --- Start patching dynamic partitions ---\n\n"
-        echo -e "# Update dynamic partition metadata\n"
-        echo    'assert(update_dynamic_partitions(package_extract_file("dynamic_partitions_op_list")));'
         if $HAS_SYSTEM; then
             echo -e "\n# Patch partition system\n"
             echo    'ui_print("Patching system image unconditionally...");'
             echo -n 'show_progress(0.'
             echo "9 - $PARTITION_COUNT" | bc -l | tr -d "\n"
             echo    '00000, 0);'
-            echo    'block_image_update(map_partition("system"), package_extract_file("system.transfer.list"), "system.new.dat.br", "system.patch.dat") ||'
+            echo -n    'block_image_update('
+            if [ "$TARGET_SUPER_PARTITION_SIZE" -ne 0 ]; then
+                echo -n    'map_partition("system"), '
+            else
+                echo -n    '"'
+                echo -n    "$TARGET_BOOT_DEVICE_PATH"
+                echo -n    '/system", '
+            fi
+            echo -n    'package_extract_file("system.transfer.list"), "system.new.dat.br", "system.patch.dat") ||'
             echo    '  abort("E1001: Failed to update system image.");'
         fi
         if $HAS_VENDOR; then
             echo -e "\n# Patch partition vendor\n"
             echo    'ui_print("Patching vendor image unconditionally...");'
             echo    'show_progress(0.100000, 0);'
-            echo    'block_image_update(map_partition("vendor"), package_extract_file("vendor.transfer.list"), "vendor.new.dat.br", "vendor.patch.dat") ||'
+            echo -n    'block_image_update('
+            if [ "$TARGET_SUPER_PARTITION_SIZE" -ne 0 ]; then
+                echo -n    'map_partition("vendor"), '
+            else
+                echo -n    '"'
+                echo -n    "$TARGET_BOOT_DEVICE_PATH"
+                echo -n    '/vendor", '
+            fi
+            echo -n    'package_extract_file("vendor.transfer.list"), "vendor.new.dat.br", "vendor.patch.dat") ||'
             echo    '  abort("E2001: Failed to update vendor image.");'
         fi
         if $HAS_PRODUCT; then
             echo -e "\n# Patch partition product\n"
             echo    'ui_print("Patching product image unconditionally...");'
             echo    'show_progress(0.100000, 0);'
-            echo    'block_image_update(map_partition("product"), package_extract_file("product.transfer.list"), "product.new.dat.br", "product.patch.dat") ||'
+            echo -n    'block_image_update('
+            if [ "$TARGET_SUPER_PARTITION_SIZE" -ne 0 ]; then
+                echo -n    'map_partition("product"), '
+            else
+                echo -n    '"'
+                echo -n    "$TARGET_BOOT_DEVICE_PATH"
+                echo -n    '/product", '
+            fi
+            echo -n    'package_extract_file("product.transfer.list"), "product.new.dat.br", "product.patch.dat") ||'
             echo    '  abort("E2001: Failed to update product image.");'
         fi
         if $HAS_SYSTEM_EXT; then
             echo -e "\n# Patch partition system_ext\n"
             echo    'ui_print("Patching system_ext image unconditionally...");'
             echo    'show_progress(0.100000, 0);'
-            echo    'block_image_update(map_partition("system_ext"), package_extract_file("system_ext.transfer.list"), "system_ext.new.dat.br", "system_ext.patch.dat") ||'
+            echo -n    'block_image_update('
+            if [ "$TARGET_SUPER_PARTITION_SIZE" -ne 0 ]; then
+                echo -n    'map_partition("system_ext"), '
+            else
+                echo -n    '"'
+                echo -n    "$TARGET_BOOT_DEVICE_PATH"
+                echo -n    '/system_ext", '
+            fi
+            echo -n    'package_extract_file("system_ext.transfer.list"), "system_ext.new.dat.br", "system_ext.patch.dat") ||'
             echo    '  abort("E2001: Failed to update system_ext image.");'
         fi
         if $HAS_ODM; then
             echo -e "\n# Patch partition odm\n"
             echo    'ui_print("Patching odm image unconditionally...");'
             echo    'show_progress(0.100000, 0);'
-            echo    'block_image_update(map_partition("odm"), package_extract_file("odm.transfer.list"), "odm.new.dat.br", "odm.patch.dat") ||'
+            echo -n    'block_image_update('
+            if [ "$TARGET_SUPER_PARTITION_SIZE" -ne 0 ]; then
+                echo -n    'map_partition("odm"), '
+            else
+                echo -n    '"'
+                echo -n    "$TARGET_BOOT_DEVICE_PATH"
+                echo -n    '/odm", '
+            fi
+            echo -n    'package_extract_file("odm.transfer.list"), "odm.new.dat.br", "odm.patch.dat") ||'
             echo    '  abort("E2001: Failed to update odm image.");'
         fi
         if $HAS_VENDOR_DLKM; then
             echo -e "\n# Patch partition vendor_dlkm\n"
             echo    'ui_print("Patching vendor_dlkm image unconditionally...");'
             echo    'show_progress(0.100000, 0);'
-            echo    'block_image_update(map_partition("vendor_dlkm"), package_extract_file("vendor_dlkm.transfer.list"), "vendor_dlkm.new.dat.br", "vendor_dlkm.patch.dat") ||'
+            echo -n    'block_image_update('
+            if [ "$TARGET_SUPER_PARTITION_SIZE" -ne 0 ]; then
+                echo -n    'map_partition("vendor_dlkm"), '
+            else
+                echo -n    '"'
+                echo -n    "$TARGET_BOOT_DEVICE_PATH"
+                echo -n    '/vendor_dlkm", '
+            fi
+            echo -n    'package_extract_file("vendor_dlkm.transfer.list"), "vendor_dlkm.new.dat.br", "vendor_dlkm.patch.dat") ||'
             echo    '  abort("E2001: Failed to update vendor_dlkm image.");'
         fi
         if $HAS_ODM_DLKM; then
             echo -e "\n# Patch partition odm_dlkm\n"
             echo    'ui_print("Patching odm_dlkm image unconditionally...");'
             echo    'show_progress(0.100000, 0);'
-            echo    'block_image_update(map_partition("odm_dlkm"), package_extract_file("odm_dlkm.transfer.list"), "odm_dlkm.new.dat.br", "odm_dlkm.patch.dat") ||'
+            echo -n    'block_image_update('
+            if [ "$TARGET_SUPER_PARTITION_SIZE" -ne 0 ]; then
+                echo -n    'map_partition("odm_dlkm"), '
+            else
+                echo -n    '"'
+                echo -n    "$TARGET_BOOT_DEVICE_PATH"
+                echo -n    '/odm_dlkm", '
+            fi
+            echo -n    'package_extract_file("odm_dlkm.transfer.list"), "odm_dlkm.new.dat.br", "odm_dlkm.patch.dat") ||'
             echo    '  abort("E2001: Failed to update odm_dlkm image.");'
         fi
         if $HAS_SYSTEM_DLKM; then
             echo -e "\n# Patch partition system_dlkm\n"
             echo    'ui_print("Patching system_dlkm image unconditionally...");'
             echo    'show_progress(0.100000, 0);'
-            echo    'block_image_update(map_partition("system_dlkm"), package_extract_file("system_dlkm.transfer.list"), "system_dlkm.new.dat.br", "system_dlkm.patch.dat") ||'
+            echo -n    'block_image_update('
+            if [ "$TARGET_SUPER_PARTITION_SIZE" -ne 0 ]; then
+                echo -n    'map_partition("system_dlkm"), '
+            else
+                echo -n    '"'
+                echo -n    "$TARGET_BOOT_DEVICE_PATH"
+                echo -n    '/system_dlkm", '
+            fi
+            echo -n    'package_extract_file("system_dlkm.transfer.list"), "system_dlkm.new.dat.br", "system_dlkm.patch.dat") ||'
             echo    '  abort("E2001: Failed to update system_dlkm image.");'
         fi
-        echo -e "\n# --- End patching dynamic partitions ---\n"
+        if [ "$TARGET_SUPER_PARTITION_SIZE" -ne 0 ]; then
+            echo -e "\n# --- End patching dynamic partitions ---\n"
+        else
+            echo -e "\n"
+        fi
         if $HAS_DTBO; then
             echo    'ui_print("Full Patching dtbo.img img...");'
             echo -n 'package_extract_file("dtbo.img", "'
@@ -449,13 +519,15 @@ while read -r i; do
     mv "$WORK_DIR/$PARTITION.img" "$TMP_DIR/$PARTITION.img"
 done <<< "$(find "$WORK_DIR" -mindepth 1 -maxdepth 1 -type d)"
 
-echo "Building super_empty.img"
-[ -f "$TMP_DIR/super_empty.img" ] && rm -f "$TMP_DIR/super_empty.img"
-CMD="lpmake $(GENERATE_LPMAKE_OPT)"
-$CMD &> /dev/null
+if [ "$TARGET_SUPER_PARTITION_SIZE" -ne 0 ]; then
+    echo "Building super_empty.img"
+    [ -f "$TMP_DIR/super_empty.img" ] && rm -f "$TMP_DIR/super_empty.img"
+    CMD="lpmake $(GENERATE_LPMAKE_OPT)"
+    $CMD &> /dev/null
 
-echo "Generating dynamic_partitions_op_list"
-GENERATE_OP_LIST
+    echo "Generating dynamic_partitions_op_list"
+    GENERATE_OP_LIST
+fi
 
 while read -r i; do
     PARTITION="$(basename "$i" | sed "s/.img//g")"
