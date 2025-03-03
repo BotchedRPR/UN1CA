@@ -1,0 +1,2 @@
+# Enable updateable APEX images
+ro.apex.updatable=true
