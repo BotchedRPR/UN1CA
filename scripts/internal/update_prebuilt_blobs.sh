@@ -34,10 +34,6 @@ if [ "$#" != 1 ]; then
 fi
 
 case "$1" in
-        MODULE="$1"
-        FW="SM-A736B/XME/352828291234563"
-        BLOBS="$(find "$SRC_DIR/unica/patches/nfc/system" -type f | sed "s.$SRC_DIR/unica/patches/nfc.system.")"
-        ;;
     "unica/patches/product_feature/fingerprint/optical_fod")
         MODULE="$1"
         FW="SM-X716B/EUX/353439961234567"
