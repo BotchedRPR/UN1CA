@@ -140,19 +140,6 @@ system/priv-app/SOAgent7
 system/priv-app/SamsungPass
 system/priv-app/SPPPushClient
 system/priv-app/Upday
-system/lib64/libdualcam_refocus_image.so
-system/lib64/libpic_best.arcsoft.so
-system/lib64/libdualcam_portraitlighting_gallery_360.so
-system/lib64/libarcsoft_dualcam_portraitlighting.so
-system/lib64/libdualcam_refocus_gallery_54.so
-system/lib64/libdualcam_refocus_gallery_50.so
-system/lib64/libsuper_fusion.arcsoft.so
-system/lib64/libhumantracking.arcsoft.so
-system/lib64/libdualcam_refocus_image_lite.so
-system/lib64/libhybrid_high_dynamic_range.arcsoft.so
-system/lib64/libae_bracket_hdr.arcsoft.so
-system/lib64/libface_recognition.arcsoft.so
-system/lib64/libmf_bayer_enhance.arcsoft.so
 "
 
 # eSIM
