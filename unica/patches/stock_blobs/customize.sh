@@ -25,37 +25,6 @@ REMOVE_FROM_WORK_DIR()
 SOURCE_FIRMWARE_PATH=$(echo -n "$SOURCE_FIRMWARE" | sed 's./._.g' | rev | cut -d "_" -f2- | rev)
 TARGET_FIRMWARE_PATH=$(echo -n "$TARGET_FIRMWARE" | sed 's./._.g' | rev | cut -d "_" -f2- | rev)
 
-echo "Replacing boot animation blobs with stock"
-BLOBS_LIST="
-/system/system/media/battery_error.spi
-/system/system/media/battery_lightning_fast.spi
-/system/system/media/battery_lightning.spi
-/system/system/media/battery_low.spi
-/system/system/media/battery_temperature_error.spi
-/system/system/media/battery_temperature_limit.spi
-/system/system/media/battery_water_usb.spi
-/system/system/media/bootsamsungloop.qmg
-/system/system/media/bootsamsung.qmg
-/system/system/media/charging_vi_100.spi
-/system/system/media/charging_vi_level1.spi
-/system/system/media/charging_vi_level2.spi
-/system/system/media/charging_vi_level3.spi
-/system/system/media/charging_vi_level4.spi
-/system/system/media/dock_error_usb.spi
-/system/system/media/incomplete_connect.spi
-/system/system/media/lcd_density.txt
-/system/system/media/percentage.spi
-/system/system/media/safety_timer_usb.spi
-/system/system/media/shutdown.qmg
-/system/system/media/slow_charging_usb.spi
-/system/system/media/temperature_limit_usb.spi
-/system/system/media/water_protection_usb.spi
-"
-for blob in $BLOBS_LIST
-do
-    cp -a --preserve=all "$FW_DIR/$TARGET_FIRMWARE_PATH$blob" "$WORK_DIR$blob"
-done
-
 echo "Replacing saiv blobs with stock"
 if [ -d "$FW_DIR/$TARGET_FIRMWARE_PATH/system/system/etc/saiv" ]; then
     BLOBS_LIST="
