@@ -34,17 +34,6 @@ if [ "$#" != 1 ]; then
 fi
 
 case "$1" in
-    "unica/patches/deknox")
-        MODULE="$1"
-        FW="SM-A736B/XME/352828291234563"
-        BLOBS="$(find "$SRC_DIR/unica/patches/deknox/system" -type f -not -name "*server*" | sed "s.$SRC_DIR/unica/patches/deknox.system.")"
-        ;;
-    "unica/patches/mass_cam")
-        MODULE="$1"
-        FW="SM-S711B/EUX/358615311234564"
-        BLOBS="$(find "$SRC_DIR/unica/patches/mass_cam/system" -type f | sed "s.$SRC_DIR/unica/patches/mass_cam.system.")"
-        ;;
-    "unica/patches/nfc")
         MODULE="$1"
         FW="SM-A736B/XME/352828291234563"
         BLOBS="$(find "$SRC_DIR/unica/patches/nfc/system" -type f | sed "s.$SRC_DIR/unica/patches/nfc.system.")"
@@ -67,17 +56,6 @@ case "$1" in
         BLOBS="$(find "$SRC_DIR/unica/patches/product_feature/resolution/system" -type f \
             | sed "s.$SRC_DIR/unica/patches/product_feature/resolution.system.")"
         ;;
-    "unica/patches/ultra")
-        MODULE="$1"
-        FW="SM-S918B/EUX/350196551234562"
-        BLOBS="$(find "$SRC_DIR/unica/patches/ultra/system" -type f | sed "s.$SRC_DIR/unica/patches/ultra.system.")"
-        ;;
-    "unica/patches/uwb")
-        MODULE="$1"
-        FW="SM-S918B/EUX/350196551234562"
-        BLOBS="$(find "$SRC_DIR/unica/patches/uwb/system" -type f | sed "s.$SRC_DIR/unica/patches/uwb.system.")"
-        BLOBS+="$(find "$SRC_DIR/unica/patches/uwb/system_ext" -type f -printf "\n%p" | sed "s.$SRC_DIR/unica/patches/uwb/..")"
-        ;;
     "unica/patches/vndk/30")
         MODULE="$1"
         FW="SM-A736B/XME/352828291234563"
@@ -97,58 +75,6 @@ case "$1" in
         MODULE="$1"
         FW="SM-S9210/CHC/356724910402671"
         BLOBS="$(find "$SRC_DIR/unica/mods/china/system" -type f | sed "s.$SRC_DIR/unica/mods/china.system.")"
-        ;;
-    "unica/mods/eureka")
-        MODULE="$1"
-        FW="SM-S9210/CHC/356724910402671"
-        BLOBS="$(find "$SRC_DIR/unica/mods/eureka/system" -type f | sed "s.$SRC_DIR/unica/mods/eureka.system.")"
-        ;;
-    "target/a71/patches/stock_blobs")
-        MODULE="$1"
-        FW="SM-A525F/SER/352938771234569"
-        BLOBS="$(find "$SRC_DIR/target/a71/patches/stock_blobs/system" -type f -not -path "*/etc/*" -printf "\n%p" \
-            | sed "s.$SRC_DIR/target/a71/patches/stock_blobs.system.")"
-        BLOBS+="$(find "$SRC_DIR/target/a71/patches/stock_blobs/system_ext" -type f -printf "\n%p" \
-            | sed "s.$SRC_DIR/target/a71/patches/stock_blobs.system/system.")"
-        ;;
-    "target/dm1q/patches/china")
-        MODULE="$1"
-        FW="SM-S9110/TGY/RFCW2198XNF"
-        BLOBS="$(find "$SRC_DIR/target/dm1q/patches/china/vendor" -type f -not -path "*/etc/*" | sed "s.$SRC_DIR/target/dm1q/patches/china/..")"
-        ;;
-    "target/dm2q/patches/china")
-        MODULE="$1"
-        FW="SM-S9160/TGY/R5CW22FT58F"
-        BLOBS="$(find "$SRC_DIR/target/dm2q/patches/china/vendor" -type f -not -path "*/etc/*" | sed "s.$SRC_DIR/target/dm2q/patches/china/..")"
-        ;;
-    "target/dm3q/patches/china")
-        MODULE="$1"
-        FW="SM-S9180/TGY/R5CW613B3ME"
-        BLOBS="$(find "$SRC_DIR/target/dm3q/patches/china/vendor" -type f -not -path "*/etc/*" | sed "s.$SRC_DIR/target/dm3q/patches/china/..")"
-        ;;
-    "target/m52xq/patches/stock_blobs")
-        MODULE="$1"
-        FW="SM-A528B/BTU/352599501234566"
-        BLOBS="$(find "$SRC_DIR/target/m52xq/patches/stock_blobs/product" -type f \
-            | sed "s.$SRC_DIR/target/m52xq/patches/stock_blobs/product..")"
-        BLOBS+="$(find "$SRC_DIR/target/m52xq/patches/stock_blobs/system" -type f -not -path "*/etc/*" -printf "\n%p" \
-            | sed "s.$SRC_DIR/target/m52xq/patches/stock_blobs.system.")"
-        ;;
-    "target/r8q/patches/stock_blobs")
-        MODULE="$1"
-        FW="SM-A525F/SER/352938771234569"
-        BLOBS="$(find "$SRC_DIR/target/r8q/patches/stock_blobs/product" -type f \
-            | sed "s.$SRC_DIR/target/r8q/patches/stock_blobs/product..")"
-        BLOBS+="$(find "$SRC_DIR/target/r8q/patches/stock_blobs/system" -type f -not -path "*/etc/*" -printf "\n%p" \
-            | sed "s.$SRC_DIR/target/r8q/patches/stock_blobs.system.")"
-        BLOBS+="$(find "$SRC_DIR/target/r8q/patches/stock_blobs/system_ext" -type f -printf "\n%p" \
-            | sed "s.$SRC_DIR/target/r8q/patches/stock_blobs.system/system.")"
-        ;;
-    "target/r8q/patches/vendor")
-        MODULE="$1"
-        FW="SM-G990B/EUX/353718681234563"
-        BLOBS="$(find "$SRC_DIR/target/r8q/patches/vendor/system" -type f \
-            | sed "s.$SRC_DIR/target/r8q/patches/vendor.system.")"
         ;;
     *)
         echo "Unsupported path: $1"
