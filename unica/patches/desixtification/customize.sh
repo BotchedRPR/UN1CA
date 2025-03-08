@@ -149,7 +149,7 @@ if [ -f "$FW_DIR/${MODEL}_${REGION}/vendor/lib/libdrm.so" ]; then
     ADD_TO_WORK_DIR "system" "system/apex/com.android.i18n.apex" 0 0 644 "u:object_r:system_file:s0"
 
     # Add tzdata5 APEX as OneUI 6 i18n APEX uses it
-    REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/apex/com.google.android.tzdata5.apex"
+    REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/apex/com.google.android.tzdata6.apex"
     ADD_TO_WORK_DIR "system" "system/apex/com.google.android.tzdata5.apex" 0 0 644 "u:object_r:system_file:s0"
 
     # Set props
