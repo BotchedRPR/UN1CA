@@ -73,7 +73,7 @@ case "$1" in
         ;;
     "unica/mods/china")
         MODULE="$1"
-        FW="SM-S9210/CHC/356724910402671"
+        FW="SM-S9380/CHC/355534491000674"
         BLOBS="$(find "$SRC_DIR/unica/mods/china/system" -type f | sed "s.$SRC_DIR/unica/mods/china.system.")"
         ;;
     *)
