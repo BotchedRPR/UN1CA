@@ -1,25 +1,26 @@
-From e851a201ce7f0ae2cc2773d7aeac027e99580e0e Mon Sep 17 00:00:00 2001
-From: BlackMesa123 <giangrecosalvo9@gmail.com>
-Date: Mon, 27 Nov 2023 22:06:01 +0100
-Subject: [PATCH] Bypass ICD verification
+From 2a7c497ed376551b5efed97eb897df141f5ed7e4 Mon Sep 17 00:00:00 2001
+From: Ocin4ever <85343782+Ocin4ever@users.noreply.github.com>
+Date: Sat, 8 Mar 2025 15:53:37 +0100
+Subject: [PATCH] Bypass-ICD-verification
 
+Co-Authored-By: Salvo Giangreco <giangrecosalvo9@gmail.com>
 ---
- .../samsung/android/security/keystore/AttestParameterSpec.smali | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .../samsung/android/security/keystore/AttestParameterSpec.smali | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/smali_classes2/com/samsung/android/security/keystore/AttestParameterSpec.smali b/smali_classes2/com/samsung/android/security/keystore/AttestParameterSpec.smali
-index f8ce48d1..081e6da7 100644
+index c0db512e..196fede5 100644
 --- a/smali_classes2/com/samsung/android/security/keystore/AttestParameterSpec.smali
 +++ b/smali_classes2/com/samsung/android/security/keystore/AttestParameterSpec.smali
-@@ -145,7 +145,7 @@
- .method public isVerifiableIntegrity()Z
-     .locals 0
+@@ -69,6 +69,8 @@
  
--    iget-boolean p0, p0, Lcom/samsung/android/security/keystore/AttestParameterSpec;->mVerifiableIntegrity:Z
-+    const/4 p0, 0x1
+     iput-boolean p1, p0, Lcom/samsung/android/security/keystore/AttestParameterSpec;->mDeviceAttestation:Z
  
-     return p0
- .end method
++    const/4 p2, 0x0
++
+     iput-boolean p2, p0, Lcom/samsung/android/security/keystore/AttestParameterSpec;->mVerifiableIntegrity:Z
+ 
+     iput-boolean p1, p0, Lcom/samsung/android/security/keystore/AttestParameterSpec;->mDevicePropertiesAttestationIncluded:Z
 -- 
-2.46.0
+2.43.0
 
