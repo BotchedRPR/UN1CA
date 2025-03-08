@@ -19,3 +19,24 @@
 # - Add entries inside the specific partition containing that file (<PARTITION>_DEBLOAT+="")
 # - DO NOT add the partition name at the start of any entry (eg. "/system/dpolicy_system")
 # - DO NOT add a slash at the start of any entry (eg. "/dpolicy_system")
+
+# GameDriver
+SYSTEM_DEBLOAT+="
+system/priv-app/GameDriver-SM8750
+"
+
+# Camera SDK
+SYSTEM_DEBLOAT+="
+system/etc/default-permissions/default-permissions-com.samsung.android.globalpostprocmgr.xml
+system/etc/default-permissions/default-permissions-com.samsung.petservice.xml
+system/etc/default-permissions/default-permissions-com.samsung.videoscan.xml
+system/etc/permissions/cameraservice.xml
+system/etc/permissions/privapp-permissions-com.samsung.android.globalpostprocmgr.xml
+system/etc/permissions/privapp-permissions-com.samsung.petservice.xml
+system/etc/permissions/privapp-permissions-com.samsung.videoscan.xml
+system/framework/scamera_sep.jar
+system/priv-app/GlobalPostProcMgr
+system/priv-app/PetService
+system/priv-app/SCameraSDKService
+system/priv-app/VideoScan
+"
