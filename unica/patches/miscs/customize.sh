@@ -67,7 +67,8 @@ if [[ -f "$FW_DIR/${MODEL}_${REGION}/vendor/lib64/libDualCamBokehCapture.camera.
         SET_PROP "ro.build.flavor" \
             "$(GET_PROP "ro.build.flavor" "$FW_DIR/${MODEL}_${REGION}/system/system/build.prop")" \
             "$WORK_DIR/system/system/build.prop"
-    elif grep -q "ro.product.name" "$FW_DIR/${MODEL}_${REGION}/vendor/lib64/libDualCamBokehCapture.camera.samsung.so"; then
+    fi
+    if grep -q "ro.product.name" "$FW_DIR/${MODEL}_${REGION}/vendor/lib64/libDualCamBokehCapture.camera.samsung.so"; then
         sed -i "s/ro.product.name/ro.unica.camera/g" "$WORK_DIR/vendor/lib/libDualCamBokehCapture.camera.samsung.so" && \
             sed -i "s/ro.product.name/ro.unica.camera/g" "$WORK_DIR/vendor/lib/liblivefocus_capture_engine.so" && \
             sed -i "s/ro.product.name/ro.unica.camera/g" "$WORK_DIR/vendor/lib/liblivefocus_preview_engine.so" && \
