@@ -31,6 +31,7 @@ if [ ! -d "$FW_DIR/${MODEL}_${REGION}/system/system/app/UwbUci" ]; then
     echo "Removing UWB blobs..."
     REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/app/UwbUci"
     REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/app/UwbTest"
+    REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/app/UwbRROverlayMccMncRegulation"
     REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/etc/init/init.system.uwb.rc"
     REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/etc/permissions/com.samsung.android.uwb_extras.xml"
     REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/etc/permissions/samsung.uwb.xml"

@@ -52,7 +52,7 @@ etc/init/vendor_flash_recovery.rc
 PRODUCT_DEBLOAT+="
 app/AssistantShell
 app/Chrome64
-app/DuoStub
+app/Duo
 app/Gmail2
 app/Maps
 app/Photos
@@ -63,10 +63,11 @@ priv-app/SearchSelector
 "
 
 SYSTEM_DEBLOAT+="
+system/app/DRParser
+system/app/HMT
 system/app/DictDiotekForSec
 system/app/FactoryAirCommandManager
 system/app/FBAppManager_NS
-system/app/MoccaMobile
 system/app/PlayAutoInstallConfig
 system/app/SamsungCalendar
 system/app/SamsungPassAutofill_v1
@@ -90,7 +91,7 @@ system/app/SamsungTTSVoice_pt_BR_f00
 system/app/SamsungTTSVoice_ru_RU_f00
 system/app/SamsungTTSVoice_th_TH_f00
 system/app/SamsungTTSVoice_vi_VN_f00
-system/etc/init/digitalkey_init_nfc_tss2.rc
+system/etc/PF_TA
 system/etc/init/samsung_pass_authenticator_service.rc
 system/etc/permissions/privapp-permissions-com.microsoft.skydrive.xml
 system/etc/permissions/privapp-permissions-com.samsung.android.app.kfa.xml
@@ -117,11 +118,11 @@ system/preload/Facebook_stub_preload
 system/priv-app/AuthFramework
 system/priv-app/AREmojiEditor
 system/priv-app/AREmoji
+system/priv-app/AvatarEmojiEditor
 system/priv-app/SamsungSmartSuggestions
 system/priv-app/YourPhone_P1_5
 system/priv-app/StickerFaceARAvatar
 system/priv-app/SamsungBilling
-system/priv-app/SamsungCarKeyFw
 system/priv-app/BCService
 system/priv-app/DeviceKeystring
 system/priv-app/DiagMonAgent94
@@ -135,7 +136,8 @@ system/priv-app/ModemServiceMode
 system/priv-app/OneDrive_Samsung_v3
 system/priv-app/OMCAgent5
 system/priv-app/PaymentFramework
-system/priv-app/SOAgent7
+system/priv-app/SOAgent75
+system/priv-app/SamsungCarKeyFw
 system/priv-app/SamsungPass
 system/priv-app/SPPPushClient
 system/priv-app/Upday
@@ -150,6 +152,7 @@ if $SOURCE_IS_ESIM_SUPPORTED; then
         system/etc/sysconfig/preinstalled-packages-com.samsung.android.app.esimkeystring.xml
         system/etc/sysconfig/preinstalled-packages-com.samsung.euicc.xml
         system/priv-app/EsimKeyString
+        system/priv-app/EsimClient
         system/priv-app/EuiccService
         "
     fi
