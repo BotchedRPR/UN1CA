@@ -59,19 +59,3 @@ if [ "$TARGET_ESE_CHIP_VENDOR" = "SLSI" ]; then
 else
     echo "NXP NFC found. Ignoring."
 fi
-
-if [[ "$SOURCE_ESE_CHIP_VENDOR" != "$TARGET_ESE_CHIP_VENDOR" ]] || \
-    [[ "$SOURCE_ESE_COS_NAME" != "$TARGET_ESE_COS_NAME" ]]; then
-    DECOMPILE "system/framework/framework.jar"
-    DECOMPILE "system/framework/services.jar"
-
-    FTP="
-    system/framework/framework.jar/smali_classes5/com/android/server/SemService.smali
-    system/framework/services.jar/smali/com/android/server/SystemConfig.smali
-    system/framework/services.jar/smali_classes2/com/samsung/ucm/ucmservice/CredentialManagerService.smali
-    "
-    for f in $FTP; do
-        sed -i "s/\"$SOURCE_ESE_CHIP_VENDOR\"/\"$TARGET_ESE_CHIP_VENDOR\"/g" "$APKTOOL_DIR/$f"
-        sed -i "s/\"$SOURCE_ESE_COS_NAME\"/\"$TARGET_ESE_COS_NAME\"/g" "$APKTOOL_DIR/$f"
-    done
-fi
