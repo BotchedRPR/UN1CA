@@ -70,12 +70,13 @@ local SYSTEM_EXT_PATH
 if [ -f "$FW_DIR/${MODEL}_${REGION}/system/system/lib64/vendor.samsung_slsi.hardware.ExynosHWCServiceTW@1.0.so" ]; then
     echo "Exynos target device detected! Patching..."
 
-    SYSTEM_PATH="$SYSTEM_PATH"
+    SYSTEM_PATH="$WORK_DIR/system/system"
 
     if $TARGET_HAS_SYSTEM_EXT; then
         SYSTEM_EXT_PATH="$WORK_DIR/system_ext"
     else
         SYSTEM_EXT_PATH="$SYSTEM_PATH/system_ext"
+    fi
 
     # Delete all QCOM/QTI blobs
     ITEMS=$(find "$WORK_DIR" -name "*qti*")
