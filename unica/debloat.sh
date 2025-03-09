@@ -122,7 +122,6 @@ system/priv-app/YourPhone_P1_5
 system/priv-app/StickerFaceARAvatar
 system/priv-app/SamsungBilling
 system/priv-app/SamsungCarKeyFw
-system/priv-app/wallpaper-res
 system/priv-app/BCService
 system/priv-app/DeviceKeystring
 system/priv-app/DiagMonAgent94
