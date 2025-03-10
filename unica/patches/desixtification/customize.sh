@@ -152,6 +152,10 @@ if [ -f "$FW_DIR/${MODEL}_${REGION}/vendor/lib/libdrm.so" ]; then
     REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/apex/com.google.android.tzdata6.apex"
     ADD_TO_WORK_DIR "system" "system/apex/com.google.android.tzdata5.apex" 0 0 644 "u:object_r:system_file:s0"
 
+    # Downgrade libengmode
+    ADD_TO_WORK_DIR "system" "system/lib64/lib.engmode.samsung.so" 0 0 644 "u:object_r:system_lib_file:s0"
+    ADD_TO_WORK_DIR "system" "system/lib64/lib.engmode.samsung_jni.so" 0 0 644 "u:object_r:system_lib_file:s0"
+
     # Set props
     echo "Setting props..."
     SET_PROP "ro.vendor.product.cpu.abilist" "arm64-v8a" "$WORK_DIR/vendor/build.prop"
