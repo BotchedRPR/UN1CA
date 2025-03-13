@@ -102,9 +102,11 @@ cp -a --preserve=all "$FW_DIR/${MODEL}_${REGION}/system/system/priv-app/HotwordE
 if ! grep -q "HotwordEnrollmentOKGoogleExCORTEXM4" "$WORK_DIR/configs/file_context-product"; then
     {
         echo "/product/priv-app/HotwordEnrollmentOKGoogleExCORTEXM4 u:object_r:system_file:s0"
-        echo "/product/priv-app/HotwordEnrollmentOKGoogleExCORTEXM4/HotwordEnrollmentOKGoogleExCORTEXM4.apk u:object_r:system_file:s0"
+        echo "/product/priv-app/HotwordEnrollmentOKGoogleExCORTEXM4/HotwordEnrollmentOKGoogleExCORTEXM4\.apk u:object_r:system_file:s0"
+        echo "/product/priv-app/HotwordEnrollmentOKGoogleExCORTEXM4/HotwordEnrollmentOKGoogleExCORTEXM4\.apk\.prof u:object_r:system_file:s0"
         echo "/product/priv-app/HotwordEnrollmentXGoogleExCORTEXM4 u:object_r:system_file:s0"
-        echo "/product/priv-app/HotwordEnrollmentXGoogleExCORTEXM4/HotwordEnrollmentXGoogleExCORTEXM4.apk u:object_r:system_file:s0"
+        echo "/product/priv-app/HotwordEnrollmentXGoogleExCORTEXM4/HotwordEnrollmentXGoogleExCORTEXM4\.apk u:object_r:system_file:s0"
+        echo "/product/priv-app/HotwordEnrollmentXGoogleExCORTEXM4/HotwordEnrollmentXGoogleExCORTEXM4\.apk\.prof u:object_r:system_file:s0"
 
     } >> "$WORK_DIR/configs/file_context-product"
 fi
@@ -112,7 +114,9 @@ if ! grep -q "HotwordEnrollmentOKGoogleExCORTEXM4" "$WORK_DIR/configs/fs_config-
     {
         echo "product/priv-app/HotwordEnrollmentOKGoogleExCORTEXM4 0 0 755 capabilities=0x0"
         echo "product/priv-app/HotwordEnrollmentOKGoogleExCORTEXM4/HotwordEnrollmentOKGoogleExCORTEXM4.apk 0 0 644 capabilities=0x0"
-        echo "product/priv-app/HotwordEnrollmentOKGoogleExCORTEXM4 0 0 755 capabilities=0x0"
+        echo "product/priv-app/HotwordEnrollmentOKGoogleExCORTEXM4/HotwordEnrollmentOKGoogleExCORTEXM4.apk.prof 0 0 644 capabilities=0x0"
+        echo "product/priv-app/HotwordEnrollmentXGoogleExCORTEXM4 0 0 755 capabilities=0x0"
         echo "product/priv-app/HotwordEnrollmentXGoogleExCORTEXM4/HotwordEnrollmentXGoogleExCORTEXM4.apk 0 0 644 capabilities=0x0"
+        echo "product/priv-app/HotwordEnrollmentXGoogleExCORTEXM4/HotwordEnrollmentXGoogleExCORTEXM4.apk.prof 0 0 644 capabilities=0x0"
     } >> "$WORK_DIR/configs/fs_config-product"
 fi
