@@ -34,24 +34,6 @@ if [ "$#" != 1 ]; then
 fi
 
 case "$1" in
-    "unica/patches/product_feature/fingerprint/optical_fod")
-        MODULE="$1"
-        FW="SM-X716B/EUX/353439961234567"
-        BLOBS="$(find "$SRC_DIR/unica/patches/product_feature/fingerprint/optical_fod/system" -type f \
-            -not -path "*/priv-app/*" | sed "s.$SRC_DIR/unica/patches/product_feature/fingerprint/optical_fod.system.")"
-        ;;
-    "unica/patches/product_feature/fingerprint/side_fp")
-        MODULE="$1"
-        FW="SM-F731B/EUX/350929871234569"
-        BLOBS="$(find "$SRC_DIR/unica/patches/product_feature/fingerprint/side_fp/system" -type f \
-            | sed "s.$SRC_DIR/unica/patches/product_feature/fingerprint/side_fp.system.")"
-        ;;
-    "unica/patches/product_feature/resolution")
-        MODULE="$1"
-        FW="SM-S918B/EUX/350196551234562"
-        BLOBS="$(find "$SRC_DIR/unica/patches/product_feature/resolution/system" -type f \
-            | sed "s.$SRC_DIR/unica/patches/product_feature/resolution.system.")"
-        ;;
     "unica/patches/vndk/30")
         MODULE="$1"
         FW="SM-A736B/XME/352828291234563"

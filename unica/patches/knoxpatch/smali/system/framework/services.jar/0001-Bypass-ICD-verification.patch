@@ -16,7 +16,7 @@ index c0db512e..196fede5 100644
  
      iput-boolean p1, p0, Lcom/samsung/android/security/keystore/AttestParameterSpec;->mDeviceAttestation:Z
  
-+    const/4 p2, 0x0
++    const/4 p2, 0x1
 +
      iput-boolean p2, p0, Lcom/samsung/android/security/keystore/AttestParameterSpec;->mVerifiableIntegrity:Z
  
