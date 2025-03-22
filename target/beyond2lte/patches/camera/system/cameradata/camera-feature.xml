@@ -163,7 +163,6 @@
     <local name="SUPPORT_HYPER_LAPSE_SUPER_STEADY" value="true"/>
     <local name="SUPPORT_HYPER_LAPSE_UHD" value="true"/>
     <local name="SUPPORT_HYPER_LAPSE_NIGHT_AUTO" value="true"/>
-    <local name="SUPPORT_HYPER_LAPSE_SEAMLESS_ZOOM" value="true"/>
     <local name="SUPPORT_FRONT_HYPER_LAPSE_NIGHT" value="true"/>
     <local name="SUPPORT_HYPER_LAPSE_ASTROGRAPHY" value="true"/>
 
